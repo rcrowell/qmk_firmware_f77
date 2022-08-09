@@ -22,12 +22,13 @@ enum layer_names {
     _F2
 };
 
-#define MY_CAD LALT(LCTL(KC_DEL))
+#define MY_CAD  LALT(LCTL(KC_DEL))
+#define MY_CAPS LCTL_T(KC_CAPS)
 
 // Defines the keycodes used by our macros in process_record_user
-enum custom_keycodes {
-    QMKBEST = SAFE_RANGE
-};
+/* enum custom_keycodes { */
+/*     QMKBEST = SAFE_RANGE */
+/* }; */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
@@ -39,34 +40,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MO(_F1), KC_LGUI, KC_LALT, KC_SPC,  KC_RGUI, KC_RALT, MO(_F1),                                                                         KC_LEFT, KC_DOWN, KC_RGHT
     ),
     [_F1] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
-        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, MY_CAD,  KC_MPLY, KC_MPRV, KC_MNXT,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX,
-        MO(_F2), _______, _______, XXXXXXX, _______, _______, MO(_F2),                                                                         XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,           XXXXXXX, XXXXXXX, XXXXXXX,
+        MY_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MO(_F2), XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,                   XXXXXXX, KC_PGUP, XXXXXXX,
+        _______, _______, _______, XXXXXXX, _______, _______, _______,                                                                         KC_HOME, KC_PGDN, KC_END
     ),
     [_F2] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EEPROM_RESET,  XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DEBUG,            XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,                     XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,                     XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                         XXXXXXX, XXXXXXX, XXXXXXX
     )
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QMKBEST:
-            if (record->event.pressed) {
-                // when keycode QMKBEST is pressed
-                SEND_STRING("QMK is the best thing ever!");
-            } else {
-                // when keycode QMKBEST is released
-            }
-            break;
-    }
-    return true;
-}
+/* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
+/*     switch (keycode) { */
+/*         case QMKBEST: */
+/*             if (record->event.pressed) { */
+/*                 // when keycode QMKBEST is pressed */
+/*                 SEND_STRING("QMK is the best thing ever!"); */
+/*             } else { */
+/*                 // when keycode QMKBEST is released */
+/*             } */
+/*             break; */
+/*     } */
+/*     return true; */
+/* } */
 
 /*
 void matrix_init_user(void) {
