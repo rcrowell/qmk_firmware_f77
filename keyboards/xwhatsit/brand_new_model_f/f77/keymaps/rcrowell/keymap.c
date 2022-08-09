@@ -17,68 +17,40 @@
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
-    _BASE,
-    _F1,
-    _F2
+    _CK,
+    _QW,
+    _FN
 };
 
 #define MY_CAD  LALT(LCTL(KC_DEL))
 #define MY_CAPS LCTL_T(KC_CAPS)
+#define MY_LCTL LM(_QW, MOD_LCTL)
+#define MY_LALT LM(_QW, MOD_LALT)
+#define MY_LGUI LM(_QW, MOD_LGUI)
+#define MY_RALT LM(_QW, MOD_LALT)
+#define MY_RGUI LM(_QW, MOD_LGUI)
 
-// Defines the keycodes used by our macros in process_record_user
-/* enum custom_keycodes { */
-/*     QMKBEST = SAFE_RANGE */
-/* }; */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Base */
-    [_BASE] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
+    [_CK] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,  KC_MUTE, KC_VOLD, KC_VOLU,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,          XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,                    KC_HOME, XXXXXXX, KC_PGUP,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_ESC,                    KC_END,  KC_UP,   KC_PGDN,
-        MO(_F1), KC_LGUI, KC_LALT, KC_SPC,  KC_RGUI, KC_RALT, MO(_F1),                                                                         KC_LEFT, KC_DOWN, KC_RGHT
+        KC_TAB,  KC_Q,    KC_W,    KC_J,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,          MY_CAD,  DF(_QW), KC_PSCR,
+        MY_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_M,    KC_N,    KC_E,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,                    KC_HOME, XXXXXXX, KC_PGUP,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_ESC,                    KC_END,  KC_UP,   KC_PGDN,
+        MO(_FN), MY_LGUI, MY_LALT, KC_SPC,  MY_RALT, MY_RGUI, MO(_FN),                                                                         KC_LEFT, KC_DOWN, KC_RGHT
     ),
-    [_F1] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
+    [_QW] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
+        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,  KC_MUTE, KC_VOLD, KC_VOLU,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,          MY_CAD,  DF(_CK), KC_PSCR,
+        MY_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,                    KC_HOME, XXXXXXX, KC_PGUP,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_ESC,                    KC_END,  KC_UP,   KC_PGDN,
+        MO(_FN), MY_LGUI, MY_LALT, KC_SPC,  MY_RALT, MY_RGUI, MO(_FN),                                                                         KC_LEFT, KC_DOWN, KC_RGHT
+    ),
+    [_FN] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,           XXXXXXX, XXXXXXX, XXXXXXX,
-        MY_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MO(_F2), XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,                   XXXXXXX, KC_PGUP, XXXXXXX,
-        _______, _______, _______, XXXXXXX, _______, _______, _______,                                                                         KC_HOME, KC_PGDN, KC_END
-    ),
-    [_F2] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EEPROM_RESET,  XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DEBUG,            XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,                     XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                         XXXXXXX, XXXXXXX, XXXXXXX
+        KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, RESET,   XXXXXXX,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,                   XXXXXXX, KC_PGUP, XXXXXXX,
+        _______, KC_LGUI, KC_LALT, XXXXXXX, KC_RALT, KC_RGUI, _______,                                                                         KC_HOME, KC_PGDN, KC_END
     )
 };
-
-/* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
-/*     switch (keycode) { */
-/*         case QMKBEST: */
-/*             if (record->event.pressed) { */
-/*                 // when keycode QMKBEST is pressed */
-/*                 SEND_STRING("QMK is the best thing ever!"); */
-/*             } else { */
-/*                 // when keycode QMKBEST is released */
-/*             } */
-/*             break; */
-/*     } */
-/*     return true; */
-/* } */
-
-/*
-void matrix_init_user(void) {
-
-}
-
-void matrix_scan_user(void) {
-
-}
-
-bool led_update_user(led_t led_state) {
-    return true;
-}
-*/
