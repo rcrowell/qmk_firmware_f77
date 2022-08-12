@@ -17,9 +17,10 @@
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
-    _CK,
     _QW,
-    _FN
+    _CK,
+    _FN,
+    _VS
 };
 
 #define MY_CAD  LALT(LCTL(KC_DEL))
@@ -32,18 +33,18 @@ enum layer_names {
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_CK] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
-        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,  KC_MUTE, KC_VOLD, KC_VOLU,
-        KC_TAB,  KC_Q,    KC_W,    KC_J,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,          MY_CAD,  DF(_QW), KC_PSCR,
-        MY_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_M,    KC_N,    KC_E,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,                    KC_HOME, XXXXXXX, KC_PGUP,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_ESC,                    KC_END,  KC_UP,   KC_PGDN,
-        MO(_FN), MY_LGUI, MY_LALT, KC_SPC,  MY_RALT, MY_RGUI, MO(_FN),                                                                         KC_LEFT, KC_DOWN, KC_RGHT
-    ),
     [_QW] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,  KC_MUTE, KC_VOLD, KC_VOLU,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,          MY_CAD,  DF(_CK), KC_PSCR,
-        MY_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,                    KC_HOME, XXXXXXX, KC_PGUP,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_ESC,                    KC_END,  KC_UP,   KC_PGDN,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,          XXXXXXX, KC_PSCR, KC_PGUP,
+        MY_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,                    DF(_CK), MY_CAD,  KC_PGDN,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_ESC,                    KC_HOME, KC_UP,   KC_END,
+        MO(_FN), MY_LGUI, MY_LALT, KC_SPC,  MY_RALT, MY_RGUI, MO(_FN),                                                                         KC_LEFT, KC_DOWN, KC_RGHT
+    ),
+    [_CK] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
+        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,  KC_MUTE, KC_VOLD, KC_VOLU,
+        KC_TAB,  KC_Q,    KC_W,    KC_J,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,          TG(_VS), KC_PSCR, KC_PGUP,
+        MY_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_M,    KC_N,    KC_E,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,                    DF(_QW), MY_CAD,  KC_PGDN,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_ESC,                    KC_HOME, KC_UP,   KC_END,
         MO(_FN), MY_LGUI, MY_LALT, KC_SPC,  MY_RALT, MY_RGUI, MO(_FN),                                                                         KC_LEFT, KC_DOWN, KC_RGHT
     ),
     [_FN] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
@@ -52,5 +53,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, RESET,   XXXXXXX,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,                   XXXXXXX, KC_PGUP, XXXXXXX,
         _______, KC_LGUI, KC_LALT, XXXXXXX, KC_RALT, KC_RGUI, _______,                                                                         KC_HOME, KC_PGDN, KC_END
+    ),
+    [_VS] = LAYOUT_ansi_hhkb_split_shift_split_backspace(
+        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,                                                                         _______, _______, _______
     )
 };
